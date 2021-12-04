@@ -8,19 +8,19 @@ on:
 
 name: run tests
 jobs:
-  # lint:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Install Go
-  #       uses: actions/setup-go@v2
-  #       with:
-  #         go-version: 1.17.x
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
-  #     - name: Run linters
-  #       uses: golangci/golangci-lint-action@v2
-  #       with:
-  #         version: v1.29
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17.x
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run linters
+        uses: golangci/golangci-lint-action@v2
+        with:
+          version: v1.29
 
   test:
     runs-on: ubuntu-latest
@@ -46,4 +46,4 @@ jobs:
       - name: Run tests
         run:  go test -v -covermode=count
         env:
-          DB_STR: "postgres://postgres:postgres@postgres/db_test"
+          DB_STR: "postgres://postgres:postgres@localhost/db_test"

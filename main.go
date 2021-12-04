@@ -43,10 +43,10 @@ func setupRouter() *gin.Engine {
 			} else if !challenge.Available { // 403
 				c.String(http.StatusForbidden, fmt.Sprintf("challenge %q not available", challenge.Name))
 			} else { // create challenge and answer 200
+				//nolint:errcheck
 				db.Db.Model(&user).Association("Challenges").Append([]models.Challenge{challenge})
 				c.String(http.StatusOK, fmt.Sprintf("challenge %q accepted!", challenge.Name))
 			}
-			break
 		default:
 			c.String(http.StatusBadRequest, fmt.Sprintf("action %q not allowed", action))
 		}
@@ -56,5 +56,6 @@ func setupRouter() *gin.Engine {
 
 func main() {
 	r := setupRouter()
+	//nolint:errcheck
 	r.Run(":8080")
 }

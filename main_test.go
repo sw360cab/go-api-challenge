@@ -60,6 +60,7 @@ func TestChallenges(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, 200, w.Code)
+	//nolint:errcheck
 	json.NewDecoder(w.Body).Decode(&challenges)
 	assert.Equal(t, 3, len(challenges))
 }

@@ -24,6 +24,8 @@ func init() {
 		log.Fatal(fmt.Sprintf("Database is unreachable: %v\n", err))
 	}
 	// Migrate the schema
+	//nolint:errcheck
 	Db.AutoMigrate(&models.User{})
+	//nolint:errcheck
 	Db.AutoMigrate(&models.Challenge{})
 }
