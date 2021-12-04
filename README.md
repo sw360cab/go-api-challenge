@@ -8,14 +8,14 @@ The challenge has been executed in two different steps.
 
 `tag: 1 hour`:
 As the challenge required, the tag is a snapshot of what has been done in one hour.
-To be honest it is actually one hour and half, just to clean a little bit the code \
+To be honest it is actually one hour and half, just to clean a little bit the code
 and perform some tests via cURL and fix corresponding small errors.
 
 What has been done:
 
 - Design from scratch of the application
 - Definition of Database models
-- Setup of the environment including db connections, libraries and frameworks \
+- Setup of the environment including db connections, libraries and frameworks
 (in particular [Gin](https://github.com/gin-gonic/gin) and [GORM](https://gorm.io))
 - Design and coding of the Backend which requires two APIs
   - GET: `/challenges` => retrieve all the available challenges in the db
@@ -24,7 +24,7 @@ What has been done:
 
 For sake of simplicity:
 
-- some sample data are automatically removed and inserted \
+- some sample data are automatically removed and inserted
 in the database, when launching the application
 - all the authorization middleware for APIs has been skipped
 
@@ -50,6 +50,16 @@ For personal interest I have gone beyond and spent a couple more hours on the pr
 - Improved design to support lifecycle of Challenges
 
 ## Usage
+
+### Prerequisite: DB Connection string
+
+In order to avoid committing secrets on a public repository,
+the connections string is supposed to be provided via env variable `DB_STR`
+
+It is possible to create a text file named `.env` (dotenv) in the root directory,
+which contains a line in the form:
+
+    DB_STR=<postgres://...>
 
 ### Running
 
